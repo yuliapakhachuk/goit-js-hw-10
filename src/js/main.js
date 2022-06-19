@@ -1,6 +1,6 @@
 import '../css/styles.css';
 import Notiflix from 'notiflix';
-import debounce from 'lodash.debounce';
+import _, {debounce} from 'lodash';
 import { fetchCountries } from './fetchCountries';
 
 
@@ -19,7 +19,7 @@ refs.input.addEventListener("input", debounce(searchingCountry, DEBOUNCE_DELAY))
 function searchingCountry() {
     const searchRequest = refs.input.value.trim();
 
-    if (searchRequest === null) { return; }
+    if (searchRequest === "") { return; }
 
     fetchCountries(searchRequest)
     .then(countries => {
